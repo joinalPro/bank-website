@@ -19,25 +19,32 @@
     const newWithDrawAmountStr = withdraField.value;
     const newWithDrawAmount = parseFloat(newWithDrawAmountStr);
 
+     //step-7:
+     withdraField.value = '';
+
     //step -3:
     const WithdrawTotalElement = document.getElementById('withdraw-total');
     const previousWithdrawTotalStr = WithdrawTotalElement.innerText;
     const previousWithdrawTotal = parseFloat(previousWithdrawTotalStr);
     console.log(previousWithdrawTotal);
 
-    //step-4
-    const currentWithdrawTotal = previousWithdrawTotal + newWithDrawAmount;
-    WithdrawTotalElement.innerText = currentWithdrawTotal;
     //step-5:
     const balanceTotalElement = document.getElementById('blanace-total');
     const previousBalanceTotalStr = balanceTotalElement.innerText;
     const previousBalanceTotal = parseFloat(previousBalanceTotalStr);
 
+    
+
+    if(newWithDrawAmount > previousBalanceTotal){
+        alert('don\'t have this amount');
+        return;
+    }
+       //step-4
+       const currentWithdrawTotal = previousWithdrawTotal + newWithDrawAmount;
+       WithdrawTotalElement.innerText = currentWithdrawTotal;
     //step-6:
     const newBalanceTotal = previousBalanceTotal - newWithDrawAmount;
     balanceTotalElement.innerText = newBalanceTotal;
 
-    //step-7:
-    withdraField.value = '';
-
+   
 })
